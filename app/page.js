@@ -42,7 +42,7 @@ export default function Home() {
       </div>
       <p>max 7 days</p>
 
-      <div className='mb-32 grid text-center lg:grid-cols-3 gap-6'>
+      <div className='mb-32 grid text-center grid-cols-3 gap-6'>
         <a
           href='https://github.com/amyburgh'
           className='group'
