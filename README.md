@@ -1,5 +1,5 @@
 # Portfolio Placeholder
 
-This is a simple placeholder while changes are being made to the full portfolio website.
+This is a simple placeholder for a personal porfolio website currently under construction.
 
 ![Site preview](preview.jpg)
