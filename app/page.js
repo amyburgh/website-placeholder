@@ -1,113 +1,93 @@
-import Image from 'next/image'
+'use client';
+import Image from 'next/image';
+import {
+  GitHubLogoIcon,
+  LinkedInLogoIcon,
+  TwitterLogoIcon,
+} from '@radix-ui/react-icons';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const startDate = new Date('2024-01-08'); // Start date
+    const today = new Date();
+    const diffInTime = today.getTime() - startDate.getTime();
+    const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
+    setCount(diffInDays);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCount((prev) => prev + 1);
+    }, 1000 * 60 * 60 * 24); // 1 day
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
+      <div className='z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex'></div>
 
       <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+        <h1 className='border-r border-gray-400 mr-5 pr-6 py-3 text-2xl leading-5 w-fit'>
+          DAY {count}
+        </h1>
+        <div>
+          <h2 className='text-lg'>of redesign.</h2>
+        </div>
       </div>
+      <p>max 7 days</p>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
+      <div className='mb-32 grid text-center lg:grid-cols-3 gap-6'>
         <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+          href='https://github.com/amyburgh'
+          className='group'
+          target='_blank'
+          rel='noopener noreferrer'
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+          <h2 className={`mb-3 text-2xl font-semibold flex`}>
+            <span className='sr-only'>GitHub</span>
+            <GitHubLogoIcon className='h-8 w-8' aria-hidden='true' />
+            <span className='text-xs inline-block transition-transform group-hover:opacity-100 opacity-0 group-hover:translate-x-1 motion-reduce:transform-none'>
               -&gt;
             </span>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
         </a>
 
         <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
+          href='https://twitter.com/aaronmyburgh'
+          className='group'
+          target='_blank'
+          rel='noopener noreferrer'
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+          <h2 className={`mb-3 text-2xl font-semibold flex`}>
+            <span className='sr-only'>X</span>
+            <TwitterLogoIcon className='h-8 w-8' aria-hidden='true' />
+            <span className='text-xs inline-block transition-transform group-hover:opacity-100 opacity-0 group-hover:translate-x-1 motion-reduce:transform-none'>
               -&gt;
             </span>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
         </a>
 
         <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+          href='https://www.linkedin.com/in/aaronmyburgh'
+          className='group'
+          target='_blank'
+          rel='noopener noreferrer'
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+          <h2 className={`mb-3 text-2xl font-semibold flex`}>
+            <span className='sr-only'>LinkedIn</span>
+            <LinkedInLogoIcon className='h-8 w-8' aria-hidden='true' />
+            <span className='text-xs inline-block transition-transform group-hover:opacity-100 opacity-0 group-hover:translate-x-1 motion-reduce:transform-none'>
               -&gt;
             </span>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
         </a>
       </div>
     </main>
-  )
+  );
 }
